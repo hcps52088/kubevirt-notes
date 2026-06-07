@@ -1,32 +1,41 @@
-# KubeVirt 學習筆記
+---
+layout: home
 
-KubeVirt 讓你在 Kubernetes 上直接**運行虛擬機（VM）**，把 VM 當成 Pod 一樣管理。不再需要分開維護 vSphere / KVM 叢集和 k8s 叢集——一套 API 統一管理容器和 VM。
+hero:
+  name: "KubeVirt"
+  text: "學習筆記"
+  tagline: 在 Kubernetes 上統一管理容器與虛擬機
+  actions:
+    - theme: brand
+      text: 開始學習
+      link: /01-architecture/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/hcps52088/kubevirt-notes
 
-## 適合場景
-
-- 有**無法容器化的舊應用**（需要特定 OS 內核、驅動、授權）
-- **逐步遷移**：先把 VM 搬進 k8s，再慢慢改造成 container
-- **混合工作負載**：容器和 VM 共用同一套網路、儲存、調度資源
-- **開發測試**：快速開出各種 OS 環境的 VM 做測試
-
-## 學習路徑
-
-| 章節 | 主題 | 重點 |
-|------|------|------|
-| 第一章 | [架構原理](01-architecture/index.md) | 元件職責、VM 如何跑在 k8s 上 |
-| 第二章 | [安裝與設定](02-installation/index.md) | Operator 安裝、virtctl、驗證 |
-| 第三章 | [虛擬機管理](03-virtual-machines/index.md) | VMI / VM / InstanceType、生命週期 |
-| 第四章 | [Storage](04-storage/index.md) | Disk 類型、Volume 來源、DataVolume |
-| 第五章 | [Networking](05-networking/index.md) | Interface 類型、Multus、SR-IOV |
-| 第六章 | [Live Migration](06-live-migration/index.md) | 遷移原理、策略、Migration Policy |
-
-## KubeVirt vs 傳統虛擬化
-
-| | 傳統（vSphere/KVM） | KubeVirt |
-|--|---------------------|----------|
-| 管理介面 | vCenter / virsh | kubectl / virtctl |
-| 調度 | DRS | k8s Scheduler |
-| 網路 | vSwitch / OVN | k8s CNI + Multus |
-| 儲存 | vSAN / Ceph | PVC / CSI |
-| 監控 | vROps | Prometheus + Grafana |
-| API | 私有 API | Kubernetes API（CRD） |
+features:
+  - icon: 🏗️
+    title: 第一章 架構原理
+    details: virt-api、virt-controller、virt-handler、virt-launcher 元件職責，以及 VM 在 k8s 上的完整啟動流程
+    link: /01-architecture/
+  - icon: ⚙️
+    title: 第二章 安裝與設定
+    details: KubeVirt Operator 安裝、CDI 配置、virtctl CLI 工具，以及 KubeVirt CR 的所有設定選項
+    link: /02-installation/
+  - icon: 💻
+    title: 第三章 虛擬機管理
+    details: VM vs VMI 差異、RunStrategy、InstanceType、Cloud-Init 初始化、Snapshot 備份還原
+    link: /03-virtual-machines/
+  - icon: 💾
+    title: 第四章 Storage
+    details: 10 種 Volume 來源、4 種 Disk 類型、DataVolume 自動 import、熱插拔磁碟
+    link: /04-storage/
+  - icon: 🌐
+    title: 第五章 Networking
+    details: masquerade / bridge / SR-IOV / passt binding、Multus 多網路介面、外部存取方式
+    link: /05-networking/
+  - icon: 🚀
+    title: 第六章 Live Migration
+    details: Pre-copy / Post-copy / Auto-converge 三種遷移策略、MigrationPolicy 細粒度控制
+    link: /06-live-migration/
+---
